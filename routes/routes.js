@@ -1,5 +1,5 @@
 import express from 'express';
-import { addPelicula, deletePelicula, getPelicula, getPeliculas, updatePelicula } from '../controlers/BlogController.js';
+import { addPelicula, deletePelicula, getPelicula, getPeliculas, updatePelicula } from '../controlers/Controller.js';
 
 const router = express.Router();
 

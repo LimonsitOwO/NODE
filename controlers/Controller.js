@@ -1,4 +1,5 @@
-import PeliculasData from "../models/BlogModel.js";
+import PeliculasData from "../models/Model.js";
+
 export const getPeliculas = async (req, res) => {
     try {
         const allData = await PeliculasData.findAll();

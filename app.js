@@ -5,6 +5,8 @@ import peliculaRoute from './routes/routes.js'
 
 const app = express()
 
+const port = process.env.PORT || 8000;
+
 app.use(cors())
 app.use(express.json())
 app.use('/peliculas', peliculaRoute)
@@ -15,7 +17,3 @@ try {
 } catch (error) {
     console.log(`Error de conexion: ${error}`)
 }
-
-app.listen(8000, () => {
-    console.log('Server UP Runing in http://localhost:8000/')
-})

@@ -1,4 +1,8 @@
-import { Sequelize } from "sequelize";
-const db = new Sequelize('WS_FINAL', 'postgres', '',{host:'localhost', dialect:'postgres'})
+import pg from 'pg';
 
+const { Pool } = pg;
+
+const pool = new Pool({
+  connectionString: process.env.POSTGRES_URL + "?sslmode=require",
+})
 export default db;

@@ -1,9 +1,10 @@
 import express from 'express';
 import cors from 'cors';
-import pool from './database/db.js';
+import db from './database/db.js';
 import router from './routes/routes.js'
+import dotenv from 'dotenv';
+dotenv.config();
 
-/*require('dotenv').config()*/
 const app = express()
 
 app.use(cors())
@@ -16,7 +17,7 @@ try {
     console.log(`El error de conexion es: ${error}`)
 }
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 app.listen({port}, () => {
     console.log(`Escuchando por le puerto ${port}: http://localhost:${port}/peliculas/`);

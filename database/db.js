@@ -5,15 +5,30 @@ const db = new Sequelize('peliculas', 'postgres', '',{host:'localhost', dialect:
 export default db;
 */
 import { Sequelize } from 'sequelize';
+import pg from 'pg';
 import dotenv from 'dotenv';
+
 dotenv.config();
 
+const { Pool } = pg;
 
-console.log('POSTGRES_URL:', process.env.POSTGRES_URL);
+const pool = new Pool({
+  connectionString: process.env.POSTGRES_URL + "?sslmode=require",
+});
 
-const db = new Sequelize(process.env.POSTGRES_URL, {
+const db = new Sequelize({
   dialect: 'postgres',
-  ssl: true,
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000,
+  },
+  logging: false,
+  ssl: {
+    require: true,
+    rejectUnauthorized: false,
+  },
 });
 
 export default db;

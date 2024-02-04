@@ -25,10 +25,16 @@ const db = new Sequelize({
     idle: 10000,
   },
   logging: false,
-  ssl: {
-    require: true,
-    rejectUnauthorized: false,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
   },
+  username: process.env.POSTGRES_URL_USER,
+  password: process.env.POSTGRES_URL_PASSWORD,
+  host: process.env.POSTGRES_URL_HOST,
+  database: process.env.POSTGRES_URL_DATABASE,
 });
 
 export default db;

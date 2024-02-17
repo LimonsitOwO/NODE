@@ -11,12 +11,6 @@ app.use(cors())
 app.use(express.json())
 app.use('/peliculas', router)
 
-try {
-    console.log("Conexion exitosa a la base de datos")
-} catch (error) {
-    console.log(`El error de conexion es: ${error}`)
-}
-
 const port = process.env.PORT || 8000;
 
 app.listen({port}, () => {
